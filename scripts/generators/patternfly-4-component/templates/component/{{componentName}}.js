@@ -7,6 +7,6 @@ const defaultProps = {};
 const {{componentName}} = () => <div />;
 
 {{componentName}}.propTypes = propTypes;
-{{componentName}}.propTypes = defaultProps;
+{{componentName}}.defaultProps = defaultProps;
 
 export default {{componentName}};
