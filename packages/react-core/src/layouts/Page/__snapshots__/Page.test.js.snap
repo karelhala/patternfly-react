@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`replace with useful test name 1`] = `
+.pf-l-page__header {
+  display: grid;
+  grid-area: header;
+  grid-template-columns: 15rem 1fr;
+  grid-template-areas: "header-left header-right";
+}
+.pf-l-page__sidebar {
+  display: block;
+}
+.pf-l-page {
+  display: grid;
+  padding: 0px;
+  margin: 0px;
+  grid-template-columns: 15rem 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "header header" "main main";
+}
+
+<Page
+  className=""
+  header={
+    <UNDEFINED>
+      <HeaderMain
+        className=""
+      />
+      <HeaderSidebar
+        className=""
+      />
+    </UNDEFINED>
+  }
+  sidebar="Nav"
+>
+  <div
+    className="pf-l-page"
+  >
+    <Header
+      className=""
+    >
+      <header
+        className="pf-l-page__header"
+        role="banner"
+      >
+        <HeaderMain
+          className=""
+        >
+          <header
+            className=""
+          />
+        </HeaderMain>
+        <HeaderSidebar
+          className=""
+        >
+          <header
+            className=""
+          />
+        </HeaderSidebar>
+      </header>
+    </Header>
+    <Sidebar
+      className=""
+    >
+      <div
+        className="pf-l-page__sidebar"
+      >
+        Nav
+      </div>
+    </Sidebar>
+    <main
+      className=""
+      role="main"
+    >
+      Page Layout Content
+    </main>
+  </div>
+</Page>
+`;
