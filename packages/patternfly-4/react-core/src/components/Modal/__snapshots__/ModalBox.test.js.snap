@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ModalBox Test 1`] = `
-.pf-c-modal-box {
+.pf-c-modal-box.pf-m-sm {
   display: flex;
   color: #282d33;
   position: relative;
@@ -20,7 +20,7 @@ exports[`ModalBox Test 1`] = `
   aria-describedby="id"
   aria-label="test title"
   aria-modal="true"
-  className="pf-c-modal-box"
+  className="pf-c-modal-box pf-m-sm"
   role="dialog"
 >
   This is a ModalBox

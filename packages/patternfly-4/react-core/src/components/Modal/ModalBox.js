@@ -30,7 +30,7 @@ const ModalBox = ({ children, className, isLarge, title, id, ...props }) => (
     aria-label={title}
     aria-describedby={id}
     aria-modal="true"
-    className={css(styles.modalBox, className, isLarge && styles.modifiers.lg)}
+    className={css(styles.modalBox, className, isLarge ? styles.modifiers.lg : styles.modifiers.sm)}
   >
     {children}
   </div>
