@@ -23,18 +23,18 @@ export default (label, { rowIndex, columnIndex, rowData, column, property }) => 
   }
   const rowId = rowIndex !== undefined ? rowIndex : -1;
 
-  function selectClick(event) {
+  function selectClick(_checked, event) {
     const selected = rowIndex === undefined ? event.target.checked : rowData && !rowData.selected;
     onSelect && onSelect(event, selected, rowId, rowData, extraData);
   }
   const customProps = {
     ...(rowId !== -1
       ? {
-          checked: rowData && !!rowData.selected,
+          isChecked: rowData && !!rowData.selected,
           'aria-labelledby': rowLabeledBy + rowIndex
         }
       : {
-          checked: allRowsSelected,
+          isChecked: allRowsSelected,
           'aria-label': 'Select all rows'
         })
   };
@@ -45,7 +45,12 @@ export default (label, { rowIndex, columnIndex, rowData, column, property }) => 
     scope: '',
     isVisible: true,
     children: (
-      <SelectColumn {...customProps} onSelect={selectClick} name={rowId !== -1 ? `checkrow${rowIndex}` : 'check-all'}>
+      <SelectColumn
+        {...customProps}
+        id={`check-${rowLabeledBy}-${rowIndex === undefined ? 'all' : rowIndex}`}
+        onSelect={selectClick}
+        name={rowId !== -1 ? `checkrow${rowIndex}` : 'check-all'}
+      >
         {label}
       </SelectColumn>
     )

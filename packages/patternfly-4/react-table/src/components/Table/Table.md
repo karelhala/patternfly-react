@@ -192,7 +192,8 @@ class SelectableTable extends React.Component {
           cells: ['a', 'two', 'k', 'four', 'five']
         },
         {
-          cells: ['p', 'two', 'b', 'four', 'five']
+          cells: ['p', 'two', 'b', 'four', 'five'],
+          showSelect: false
         }
       ]
     };

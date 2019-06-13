@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Checkbox } from '@patternfly/react-core';
 
 const propTypes = {
   children: PropTypes.node,
@@ -14,7 +15,7 @@ const defaultProps = {
 
 const SelectColumn = ({ children, className, onSelect, ...props }) => (
   <React.Fragment>
-    <input {...props} type="checkbox" onChange={onSelect} />
+    <Checkbox {...props} onChange={onSelect} />
     {children}
   </React.Fragment>
 );

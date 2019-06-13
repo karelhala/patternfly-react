@@ -14,8 +14,9 @@ exports[`Transformer functions selectable unselected 1`] = `
 Object {
   "children": <SelectColumn
     aria-labelledby="simple-node0"
-    checked={false}
     className=""
+    id="check-simple-node-0"
+    isChecked={false}
     name="checkrow0"
     onSelect={[Function]}
   >
