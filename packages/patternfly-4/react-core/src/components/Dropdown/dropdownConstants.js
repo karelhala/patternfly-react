@@ -12,17 +12,24 @@ export const DropdownDirection = {
 
 export const DropdownContext = React.createContext({
   onSelect: () => {},
+  id: '',
+  toggleIconClass: '',
+  toggleTextClass: '',
+  textComponent: '',
   menuClass: '',
   itemClass: '',
   toggleClass: '',
   baseClass: '',
   baseComponent: 'div',
+  groupHeaderComponent: 'h1',
   sectionClass: '',
   sectionTitleClass: '',
   sectionComponent: 'section',
   disabledClass: '',
   hoverClass: '',
-  separatorClass: ''
+  separatorClass: '',
+  autoFocus: false,
+  enuComponent: 'ul'
 });
 
 export const DropdownArrowContext = React.createContext({

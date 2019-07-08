@@ -19,7 +19,7 @@ class SingleSelectInput extends React.Component {
     this.options = [
       { value: 'Choose...', disabled: false, isPlaceholder: true },
       { value: 'Mr', disabled: false },
-      { value: 'Miss', disabled: false },
+      { value: 'Miss', disabled: false, text: <div>Some complicated value</div> },
       { value: 'Mrs', disabled: false },
       { value: 'Ms', disabled: false },
       { value: 'Dr', disabled: false },
@@ -77,6 +77,7 @@ class SingleSelectInput extends React.Component {
             <SelectOption
               isDisabled={option.disabled}
               key={index}
+              text={option.text}
               value={option.value}
               isPlaceholder={option.isPlaceholder}
             />
@@ -335,12 +336,12 @@ class MultiTypeaheadSelectInput extends React.Component {
   constructor(props) {
     super(props);
     this.options = [
-      { value: 'Alabama', disabled: false },
-      { value: 'Florida', disabled: false },
-      { value: 'New Jersey', disabled: false },
-      { value: 'New Mexico', disabled: false },
-      { value: 'New York', disabled: false },
-      { value: 'North Carolina', disabled: false }
+      { value: 'alabama', disabled: false, text: 'Alabama' },
+      { value: 'florida', disabled: false, text: 'Florida' },
+      { value: 'new-jersey', disabled: false, text: 'New Jersey' },
+      { value: 'new-mexico', disabled: false, text: 'New Mexico' },
+      { value: 'new-york', disabled: false, text: 'New York' },
+      { value: 'north-carolina', disabled: false, text: 'North Carolina' }
     ];
 
     this.state = {
@@ -398,7 +399,7 @@ class MultiTypeaheadSelectInput extends React.Component {
           placeholderText="Select a state"
         >
           {this.options.map((option, index) => (
-            <SelectOption isDisabled={option.disabled} key={index} value={option.value} />
+            <SelectOption isDisabled={option.disabled} key={index} value={option.value} text={option.text} />
           ))}
         </Select>
       </div>

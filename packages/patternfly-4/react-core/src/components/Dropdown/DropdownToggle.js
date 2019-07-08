@@ -2,15 +2,25 @@ import React from 'react';
 import { CaretDownIcon } from '@patternfly/react-icons';
 import PropTypes from 'prop-types';
 import Toggle from './Toggle';
+import { DropdownContext } from './dropdownConstants';
 import styles from '@patternfly/react-styles/css/components/Dropdown/dropdown';
 import { css } from '@patternfly/react-styles';
 
 const DropdownToggle = ({ children, iconComponent: IconComponent, splitButtonItems, ...props }) => {
   const toggle = (
-    <Toggle {...props} {...splitButtonItems && { isSplitButton: true, 'aria-label': props['aria-label'] || 'Select' }}>
-      {children && <span className={IconComponent && css(styles.dropdownToggleText)}>{children}</span>}
-      {IconComponent && <IconComponent className={css(children && styles.dropdownToggleIcon)} />}
-    </Toggle>
+    <DropdownContext.Consumer>
+      {({ toggleTextClass, toggleIconClass, textComponent}) => {
+        const ToggleTextComponent = textComponent || 'span';
+        return (
+        <Toggle
+          {...props}
+          {...splitButtonItems && { isSplitButton: true, 'aria-label': props['aria-label'] || 'Select' }}
+        >
+          {children && <ToggleTextComponent className={IconComponent && css(toggleTextClass)}>{children}</ToggleTextComponent>}
+          {IconComponent && <IconComponent className={css(children && toggleIconClass)} />}
+        </Toggle>
+      )}}
+    </DropdownContext.Consumer>
   );
 
   if (splitButtonItems) {

@@ -142,6 +142,8 @@ const Dropdown = ({ onSelect, ...props }) => (
   <DropdownContext.Provider
     value={{
       onSelect: event => onSelect && onSelect(event),
+      toggleTextClass: styles.dropdownToggleText,
+      toggleIconClass: styles.dropdownToggleIcon,
       menuClass: styles.dropdownMenu,
       itemClass: styles.dropdownMenuItem,
       toggleClass: styles.dropdownToggle,

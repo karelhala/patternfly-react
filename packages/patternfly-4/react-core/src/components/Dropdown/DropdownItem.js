@@ -4,11 +4,11 @@ import InternalDropdownItem from './InternalDropdownItem';
 import { componentShape } from '../../helpers/componentShape';
 import { DropdownArrowContext } from './dropdownConstants';
 
-const DropdownItem = ({ ...props }) => (
+const DropdownItem = React.forwardRef(({ ...props }, ref) => (
   <DropdownArrowContext.Consumer>
-    {context => <InternalDropdownItem context={context} role="menuitem" tabIndex={-1} {...props} />}
+    {context => <InternalDropdownItem ref={ref} context={context} role="menuitem" tabIndex={-1} {...props} />}
   </DropdownArrowContext.Consumer>
-);
+));
 
 DropdownItem.propTypes = {
   /** Anything which can be rendered as dropdown item */

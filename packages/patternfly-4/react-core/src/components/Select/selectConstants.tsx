@@ -1,13 +1,13 @@
 import * as React from 'react';
 
 export interface SelectContextInterface {
-  onSelect: (
-    event: React.MouseEvent<any, MouseEvent> | React.ChangeEvent<HTMLInputElement>,
-    value: string,
-    isPlaceholder?: boolean
-  ) => void;
-  onClose: () => void;
-  variant: string;
+  selected: string | string[];
+  activeChild: React.ReactElement
+  variant?: SelectVariant
+}
+
+export interface RefObject {
+  ref: React.RefObject<HTMLElement>
 }
 
 export const SelectContext = React.createContext<SelectContextInterface | null>(null);
@@ -16,6 +16,7 @@ export const SelectProvider = SelectContext.Provider;
 export const SelectConsumer = SelectContext.Consumer;
 
 export enum SelectVariant {
+  multi = 'multi',
   single = 'single',
   checkbox = 'checkbox',
   typeahead = 'typeahead',

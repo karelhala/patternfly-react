@@ -4,6 +4,8 @@ import { css } from '@patternfly/react-styles';
 import { DropdownContext } from './dropdownConstants';
 
 const propTypes = {
+  /**  */
+  hideGroup: PropTypes.bool,
   /** Checkboxes within group */
   children: PropTypes.node,
   /** Additional classes added to the DropdownGroup control */
@@ -20,18 +22,25 @@ const defaultProps = {
   label: ''
 };
 
-const DropdownGroup = ({ children, className, label, ...props }) => (
+const DropdownGroup = ({ children, className, hideGroup, label, ...props }) => (
   <DropdownContext.Consumer>
-    {({ sectionClass, sectionTitleClass, sectionComponent: SectionComponent }) => (
+    {({
+      sectionClass,
+      sectionTitleClass,
+      sectionComponent: SectionComponent,
+      groupHeaderComponent: groupHeaderComponent
+    }) => {
+      const HeaderComponent = groupHeaderComponent || 'h1';
+      return (
       <SectionComponent {...props} className={css(sectionClass, className)}>
         {label && (
-          <h1 className={css(sectionTitleClass)} aria-hidden>
+          <HeaderComponent className={css(sectionTitleClass)} aria-hidden>
             {label}
-          </h1>
+          </HeaderComponent>
         )}
-        <ul role="none">{children}</ul>
+        {!hideGroup ? <ul role="none">{children}</ul> : children}
       </SectionComponent>
-    )}
+    )}}
   </DropdownContext.Consumer>
 );
 

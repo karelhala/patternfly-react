@@ -143,6 +143,7 @@ class DropdownMenu extends React.Component {
       component: Component,
       isGrouped,
       openedOnEnter,
+      autoFocus,
       ...props
     } = this.props;
     return (
@@ -171,20 +172,23 @@ class DropdownMenu extends React.Component {
         ) : (
           (isGrouped && (
             <DropdownContext.Consumer>
-              {({ menuClass }) => (
-                <div
-                  {...props}
-                  className={css(
-                    menuClass,
-                    position === DropdownPosition.right && styles.modifiers.alignRight,
-                    className
-                  )}
-                  hidden={!isOpen}
-                  role="menu"
-                >
-                  {this.extendChildren()}
-                </div>
-              )}
+                {({ menuClass, menuComponent }) => {
+                  const MenuComponent = menuComponent || 'div';
+                  return (
+                    <MenuComponent
+                      {...props}
+                      className={css(
+                        menuClass,
+                        position === DropdownPosition.right && styles.modifiers.alignRight,
+                        className
+                      )}
+                      hidden={!isOpen}
+                      role="menu"
+                    >
+                      {this.extendChildren()}
+                    </MenuComponent>
+                  );
+                }}
             </DropdownContext.Consumer>
           )) || (
             <DropdownContext.Consumer>
@@ -213,4 +217,8 @@ class DropdownMenu extends React.Component {
 DropdownMenu.propTypes = propTypes;
 DropdownMenu.defaultProps = defaultProps;
 
-export default DropdownMenu;
+const InternalDropdownMenu = (props) => (<DropdownContext.Consumer>
+  {({ autoFocus }) => <DropdownMenu autoFocus={props.autoFocus || autoFocus} {...props} />}
+</DropdownContext.Consumer>)
+
+export default InternalDropdownMenu;

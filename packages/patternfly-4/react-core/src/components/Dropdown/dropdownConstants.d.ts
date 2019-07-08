@@ -12,17 +12,24 @@ export enum DropdownDirection {
 
 export const DropdownContext: React.Context<{
   onSelect: (event: any) => void,
+  id?: string,
+  toggleIconClass?: string,
+  toggleTextClass?: string,
+  textComponent?: string,
   menuClass?: string,
   itemClass?: string,
   toggleClass?: string,
   baseClass?: string,
   baseComponent?: string,
+  groupHeaderComponent?: string,
   sectionClass?: string,
   sectionTitleClass?: string,
   sectionComponent?: string,
   disabledClass?: string,
   hoverClass?: string,
-  separatorClass?: string
+  separatorClass?: string,
+  autoFocus?: boolean,
+  menuComponent?: string
 }>
 
 export const DropdownArrowContext: React.Context<{
